@@ -1,0 +1,32 @@
+.SearchEngine .SearchEngine-Submit {
+    color: #fff;
+    background: radial-gradient(circle at 10% 20%, rgb(210, 36, 129) 0%, rgb(152, 75, 215) 90%);
+    font-weight: 900;
+    border: 1px solid black;
+    border-radius: 4px;
+
+}
+
+.SearchEngine .SearchEngine-Submit:hover {
+    background: #34094d;
+    color: #fff;
+    border: 1px solid #34094d;
+    transition: 4ms ease-in-out;
+    cursor: pointer;
+}
+
+.SearchEngine .SearchEngine-Input {
+    border: 1px solid #fff;
+    border-radius: 4px;
+
+}
+
+.SearchEngine li {
+    list-style: none;
+}
+
+.SearchEngine .description {
+    text-transform: capitalize;
+    list-style: none;
+    font-size: 2em;
+}
