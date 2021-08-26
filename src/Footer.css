@@ -1,0 +1,9 @@
+.Footer a {
+    color: #34094d;
+}
+
+.Footer {
+    position: absolute;
+    bottom: 100px;
+    color: #34094d;
+}
