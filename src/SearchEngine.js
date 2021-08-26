@@ -79,12 +79,12 @@ export default function SearchEngine(props) {
                                 width={30}
                                 timeout={400}
                             />
-                            <h1 className="mt-3 p-2">{weather.cityName}</h1>
-                            <ul className="p-0 ms-2">
+                            <h1 className="mt-3 p-0">{weather.cityName}</h1>
+                            <ul className="p-0 ms-2 description">
                                 <li>{weather.temperature}°C</li>
                                 <li>{weather.description}</li>
-                                <li>{weather.humidity}%</li>
-                                <li>{weather.wind}km/H</li>
+                                <li>Humidity: {weather.humidity}%</li>
+                                <li>Wind: {weather.wind}km/H</li>
                             </ul>
                         </Col>
                     </Row>
