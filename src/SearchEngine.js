@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./SearchEngine.css";
-import { Form, Container, Row, Col } from "react-bootstrap";
+import { Form, Container, Row, Col, Card } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import Loader from "react-loader-spinner";
@@ -23,6 +23,7 @@ export default function SearchEngine(props) {
                 humidity: response.data.main.humidity,
                 wind: Math.round(response.data.wind.speed),
                 cityName: response.data.name,
+                countryName: response.data.sys.country,
             }
         )
     }
@@ -47,18 +48,19 @@ export default function SearchEngine(props) {
 
         <Form onSubmit={handleSubmit}>
             <input
-                className="SearchEngine-Input w-50 m-2 p-2"
+                className="SearchEngine-Input w-50 m-1 p-3 rounded-sm"
                 type="search"
                 placeholder="Type a city..."
+                autoFocus="on"
                 onChange={updateSubmit}
             />
             <input
-                className="SearchEngine-Submit m-2 p-2 "
+                className="SearchEngine-Submit rounded-sm m-1 p-3 "
                 type="submit"
                 value="Search"
             />
             <input
-                className="SearchEngine-Submit m-2 p-2 "
+                className="SearchEngine-Submit rounded-sm p-3 "
                 type="submit"
                 value="Current"
                 onClick={handleCurrent}
@@ -67,25 +69,23 @@ export default function SearchEngine(props) {
 
     if (loaded) {
         return (
-            <div className="SearchEngine m-5">
+            <div className="SearchEngine m-4">
                 <Container>
                     <Row>
                         <Col className="col-12">
                             {form}
                             <Loader
                                 type="ThreeDots"
-                                color="#984BD7FF"
+                                color="#99621b"
                                 height={30}
                                 width={30}
                                 timeout={400}
                             />
-                            <h1 className="mt-3 p-0">{weather.cityName}</h1>
-                            <ul className="p-0 ms-2 description">
-                                <li>{weather.temperature}°C</li>
-                                <li>{weather.description}</li>
-                                <li>Humidity: {weather.humidity}%</li>
-                                <li>Wind: {weather.wind}km/H</li>
-                            </ul>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col className="SearchEngine Header col-6 mt-5">
+                            <h1>{weather.cityName}, {weather.countryName}</h1>
                         </Col>
                     </Row>
                 </Container>
@@ -93,7 +93,7 @@ export default function SearchEngine(props) {
         )
     } else {
         return (
-            <div className="SearchEngine m-5 description">
+            <div className="SearchEngine m-4 description">
                 <Container>
                     <Row>
                         <Col className="col-12">
