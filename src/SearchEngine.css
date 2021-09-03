@@ -1,9 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
 
 .SearchEngine h1 {
-    color: #8a663f;
-    font-family: 'Ubuntu Mono', monospace;
     font-size: 3.5em;
+}
+
+.SearchEngine h2 {
+    font-size: 1.5em;
+}
+
+.SearchEngine .Header img {
+    width: 8em;
+}
+
+.SearchEngine .Temperature span {
+    font-size: 5em;
 }
 
 .SearchEngine .SearchEngine-Input{
@@ -11,13 +20,13 @@
 }
 .SearchEngine .SearchEngine-Submit {
     color: #fff;
-    background: #8a663f;
-    border: 1px solid #8a663f;;
+    background: #352f3a;
+    border: 1px solid #352f3a;;
 }
 
 .SearchEngine .SearchEngine-Submit:hover {
-    background: #8a663f;
-    color: #fff;
+    background: #fff;
+    color: #352f3a;
     border: 1px solid #bbbec4;
     transition: 100ms ease-in-out;
     cursor: pointer;
@@ -27,12 +36,8 @@
     list-style: none;
 }
 
-.SearchEngine .Subtitle {
-    text-align: center;
-    font-size: 2em;
-}
 .SearchEngine .description {
     text-transform: capitalize;
     list-style: none;
-    font-size: 1em;
+    font-size: 1.5em;
 }
