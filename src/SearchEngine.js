@@ -106,17 +106,23 @@ export default function SearchEngine() {
                         </Col>
                     </Row>
                     <Row>
-                        <Col className="SearchEngine Header col-7 mt-5">
-                            <h1>{weather.cityName}, {weather.countryName}</h1>
-                            <h2>Tuesday August 31</h2>
+                        <Col className="SearchEngine Header col-6 mt-5">
+                           <div>
+                               <h1>{weather.cityName}, {weather.countryName}</h1>
+                               <h2>Tuesday August 31</h2>
+                           </div>
                         </Col>
-                        <Col className="SearchEngine Temperature mt-4 col-2 ps-0">
-                            <span>{weather.temperature}°</span>
+                        <Col className="SearchEngine col-3 Temperature mt-4">
+                            <div>
+                                <span>{weather.temperature}°</span>
+                            </div>
                         </Col>
-                        <Col className="SearchEngine Header col-3 mt-4 clearfix">
-                            <img src={weather.icon} alt="weather-icon"/>
-                            <div className="mt-3 description">
-                                <span>{weather.description}</span>
+                        <Col className="SearchEngine Header col-3 mt-5 clearfix">
+                            <div>
+                                <img src={weather.icon} alt="weather-icon"/>
+                                <div className="mt-3 description">
+                                    <span>{weather.description}</span>
+                                </div>
                             </div>
                         </Col>
                     </Row>
