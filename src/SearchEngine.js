@@ -46,6 +46,9 @@ export default function SearchEngine() {
             cityName: response.data.name,
             countryName: response.data.sys.country,
             icon: IconMap[response.data.weather[0].icon],
+            feelsLike: Math.round(response.data.main.feels_like),
+            tempMax:Math.round(response.data.main.temp_max),
+            tempMin:Math.round(response.data.main.temp_min),
         })
 
     }
@@ -106,21 +109,27 @@ export default function SearchEngine() {
                         </Col>
                     </Row>
                     <Row>
-                        <Col className="SearchEngine Header col-6 mt-5">
-                           <div>
+                        <Col className="SearchEngine Header col-5">
+                           <div className="pe-5 mt-5">
                                <h1>{weather.cityName}, {weather.countryName}</h1>
-                               <h2>Tuesday August 31</h2>
+                               <ul className="SearchEngine Description mt-1">
+                                   <li >Tuesday August 31</li>
+                                   <li>Feels Like {weather.feelsLike}°</li>
+                                   <li>High: {weather.tempMax}° | Low: {weather.tempMin}°</li>
+                                   <li>Humidity: {weather.humidity}%</li>
+                                   <li>Wind: {weather.wind}km/H</li>
+                               </ul>
                            </div>
                         </Col>
-                        <Col className="SearchEngine col-3 Temperature mt-4">
-                            <div>
-                                <span>{weather.temperature}°</span>
+                        <Col className="SearchEngine col-3 Temperature">
+                            <div className="mt-5 ps-5">
+                              <span>{weather.temperature}°</span>
                             </div>
                         </Col>
-                        <Col className="SearchEngine Header col-3 mt-5 clearfix">
-                            <div>
+                        <Col className="SearchEngine Header col-4 clearfix">
+                            <div className="mt-5 pe-5">
                                 <img src={weather.icon} alt="weather-icon"/>
-                                <div className="mt-3 description">
+                                <div className="mt-2 Description">
                                     <span>{weather.description}</span>
                                 </div>
                             </div>

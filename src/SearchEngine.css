@@ -1,10 +1,10 @@
 
 .SearchEngine h1 {
-    font-size: 3.5em;
+    font-size: 3em;
 }
 
 .SearchEngine h2 {
-    font-size: 1.5em;
+    font-size: 1.3em;
 }
 
 .SearchEngine .Header img {
@@ -12,7 +12,7 @@
 }
 
 .SearchEngine .Temperature span {
-    font-size: 5em;
+    font-size: 6em;
 }
 
 .SearchEngine .SearchEngine-Input{
@@ -32,12 +32,9 @@
     cursor: pointer;
 }
 
-.SearchEngine li {
-    list-style: none;
-}
-
-.SearchEngine .description {
+.SearchEngine .Description {
     text-transform: capitalize;
     list-style: none;
-    font-size: 1.5em;
+    font-size: 1.3em;
+    padding: 0;
 }
