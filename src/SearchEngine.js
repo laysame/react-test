@@ -33,7 +33,7 @@ const IconMap = {
 export default function SearchEngine(props) {
     const apiKey = "14710927095f6c1242ef86d55fbc5c01";
     const [unit, setUnit] = useState("metric");
-    const [city, setCity] = useState(null);
+    const [city, setCity] = useState(props.defaultCity);
     const [weather, setWeather] = useState({ready:false});
 
     function handleResponse(response) {
@@ -53,8 +53,15 @@ export default function SearchEngine(props) {
         });
     }
 
+    function search(){
+        const unit = "metric";
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},&appid=${apiKey}&units=${unit}`;
+        axios.get(url).then(handleResponse);
+    }
+
     function handleSubmit(event){
         event.preventDefault();
+        search();
     }
 
     function updateSubmit(event){
@@ -101,18 +108,17 @@ export default function SearchEngine(props) {
             </div>
         )
     } else {
-        const unit = "metric";
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity},&appid=${apiKey}&units=${unit}`;
-        axios.get(url).then(handleResponse);
-
+        search();
         return (
-            <Loader
-                type="ThreeDots"
-                color="#99621b"
-                height={30}
-                width={30}
-                timeout={500}
-            />
+            <div className="text-center">
+                <Loader
+                    type="ThreeDots"
+                    color="#99621b"
+                    height={50}
+                    width={50}
+                    timeout={600}
+                />
+            </div>
         )
     }
 }
