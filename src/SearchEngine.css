@@ -11,20 +11,21 @@
     width: 8em;
 }
 
-.SearchEngine .Temperature span {
+.SearchEngine .Temperature {
     font-size: 6em;
 }
 
 .SearchEngine .SearchEngine-Input{
     border: 1px solid #bbbec4;
 }
-.SearchEngine .SearchEngine-Submit {
+.SearchEngine .SearchEngine-Submit, .SearchEngine .btn {
     color: #fff;
     background: #352f3a;
     border: 1px solid #352f3a;;
+    font-weight: bold;
 }
 
-.SearchEngine .SearchEngine-Submit:hover {
+.SearchEngine .SearchEngine-Submit:hover, .SearchEngine .btn:hover{
     background: #fff;
     color: #352f3a;
     border: 1px solid #bbbec4;
@@ -33,8 +34,14 @@
 }
 
 .SearchEngine .Description {
-    text-transform: capitalize;
     list-style: none;
-    font-size: 1.3em;
     padding: 0;
+    font-size: 1.3em;
 }
+
+.SearchEngine .list-group {
+    background: none;
+}
+
+
+

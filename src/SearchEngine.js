@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import "./SearchEngine.css";
-import { Form, Container, Row, Col, Card } from "react-bootstrap";
+import { Form, Container, Row, Col, Card, ButtonGroup, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import Loader from "react-loader-spinner";
+
+import SearchEngineInfo from "./SearchEngineInfo";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { clock } from '@fortawesome/free-solid-svg-icons';
 
@@ -28,17 +30,15 @@ const IconMap = {
     '50n': '/icons/mist.png',
 };
 
-export default function SearchEngine() {
-    const [city, setCity] = useState(null);
-    const [weather, setWeather] = useState({});
-    const [loaded, setLoaded] = useState(false);
-
+export default function SearchEngine(props) {
     const apiKey = "14710927095f6c1242ef86d55fbc5c01";
-    const unit = "metric";
+    const [unit, setUnit] = useState("metric");
+    const [city, setCity] = useState(null);
+    const [weather, setWeather] = useState({ready:false});
 
     function handleResponse(response) {
-        setLoaded(true)
         setWeather({
+            ready: true,
             temperature: Math.round(response.data.main.temp),
             description: response.data.weather[0].description,
             humidity: response.data.main.humidity,
@@ -49,15 +49,12 @@ export default function SearchEngine() {
             feelsLike: Math.round(response.data.main.feels_like),
             tempMax:Math.round(response.data.main.temp_max),
             tempMin:Math.round(response.data.main.temp_min),
-        })
-
+            date: new Date(response.data.dt * 1000),
+        });
     }
 
     function handleSubmit(event){
         event.preventDefault();
-        //setCity(input);
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},&appid=${apiKey}&units=${unit}`;
-        axios.get(url).then(handleResponse);
     }
 
     function updateSubmit(event){
@@ -68,9 +65,7 @@ export default function SearchEngine() {
         event.preventDefault();
     }
 
-
     let form =
-
         <Form onSubmit={handleSubmit}>
             <input
                 className="SearchEngine-Input w-50 m-1 p-3 rounded-sm"
@@ -92,65 +87,32 @@ export default function SearchEngine() {
             />
         </Form>;
 
-    if (loaded) {
+    if (weather.ready) {
         return (
             <div className="SearchEngine m-5">
                 <Container>
                     <Row>
                         <Col className="col-12">
                             {form}
-                            <Loader
-                                type="ThreeDots"
-                                color="#99621b"
-                                height={30}
-                                width={30}
-                                timeout={400}
-                            />
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col className="SearchEngine Header col-5">
-                           <div className="pe-5 mt-5">
-                               <h1>{weather.cityName}, {weather.countryName}</h1>
-                               <ul className="SearchEngine Description mt-1">
-                                   <li >Tuesday August 31</li>
-                                   <li>Feels Like {weather.feelsLike}°</li>
-                                   <li>High: {weather.tempMax}° | Low: {weather.tempMin}°</li>
-                                   <li>Humidity: {weather.humidity}%</li>
-                                   <li>Wind: {weather.wind}km/H</li>
-                               </ul>
-                           </div>
-                        </Col>
-                        <Col className="SearchEngine col-3 Temperature">
-                            <div className="mt-5 ps-5">
-                              <span>{weather.temperature}°</span>
-                            </div>
-                        </Col>
-                        <Col className="SearchEngine Header col-4 clearfix">
-                            <div className="mt-5 pe-5">
-                                <img src={weather.icon} alt="weather-icon"/>
-                                <div className="mt-2 Description">
-                                    <span>{weather.description}</span>
-                                </div>
-                            </div>
+                            <SearchEngineInfo data={weather}/>
                         </Col>
                     </Row>
                 </Container>
             </div>
         )
     } else {
+        const unit = "metric";
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity},&appid=${apiKey}&units=${unit}`;
+        axios.get(url).then(handleResponse);
+
         return (
-            <div className="SearchEngine m-5 description">
-                <Container>
-                    <Row>
-                        <Col className="col-12">
-                            {form}
-                        </Col>
-                    </Row>
-                </Container>
-
-            </div>
-
+            <Loader
+                type="ThreeDots"
+                color="#99621b"
+                height={30}
+                width={30}
+                timeout={500}
+            />
         )
     }
 }
