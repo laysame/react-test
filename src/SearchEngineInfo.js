@@ -1,17 +1,12 @@
 import React, { useState } from "react";
 import {Button, ButtonGroup, Col, Row} from "react-bootstrap";
 import FormattedDate from "./FormattedDate";
+import WeatherIcon from "./WeatherIcon";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { clock } from '@fortawesome/free-solid-svg-icons';
 
 export default function SearchEngineInfo(props) {
-    const [unit, setUnit] = useState("metric");
 
-    function convertMetric(){
-        setUnit("metric");
-    }
-
-    function convertImperial(){
-        setUnit("imperial");
-    }
     return (
         <div className="SearchEngineInfo">
             <Row>
@@ -23,14 +18,14 @@ export default function SearchEngineInfo(props) {
                         </h2>
                         <span className="SearchEngine Temperature">{props.data.temperature}°</span>
                         <ButtonGroup size="mb-2">
-                            <Button className="btn" onClick={convertMetric}>°C</Button>
-                            <Button className="btn" onClick={convertImperial}>°F</Button>
+                            <Button className="btn">°C</Button>
+                            <Button className="btn">°F</Button>
                         </ButtonGroup>
                     </div>
                 </Col>
                 <Col className="SearchEngine Header col-6 clearfix mt-5 p-0">
                     <div className="">
-                        <img src={props.data.icon} alt="weather-icon"/>
+                       <WeatherIcon code={props.data.icon} alt={props.data.description}/>
                         <div className="mt-1 Description">
                             <span>{props.data.description}</span>
                         </div>
