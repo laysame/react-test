@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./SearchEngine.css";
-import { Form, Container, Row, Col, Card, ButtonGroup, Button } from "react-bootstrap";
+import { Form, Container, Row, Col} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import Loader from "react-loader-spinner";
@@ -13,7 +13,6 @@ export default function SearchEngine(props) {
     const [weather, setWeather] = useState({ready:false});
 
     function handleResponse(response) {
-        console.log(response.data)
         setWeather({
             ready: true,
             temperature: Math.round(response.data.main.temp),
@@ -30,15 +29,20 @@ export default function SearchEngine(props) {
         });
     }
 
-    function apiSearch(){
-       // const unit = "metric";
+    function onUnitChange(unit) {
+        console.log(unit)
+        setUnit(unit);
+        apiSearch(unit)
+    }
+
+    function apiSearch(unit){
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},&appid=${apiKey}&units=${unit}`;
         axios.get(url).then(handleResponse);
     }
 
     function handleSubmit(event){
         event.preventDefault();
-        apiSearch();
+        apiSearch(unit);
     }
 
     function updateSubmit(event){
@@ -78,14 +82,14 @@ export default function SearchEngine(props) {
                     <Row>
                         <Col className="col-12">
                             {form}
-                            <SearchEngineInfo data={weather}/>
+                            <SearchEngineInfo data={weather} onUnitChange={onUnitChange} />
                         </Col>
                     </Row>
                 </Container>
             </div>
         )
     } else {
-        apiSearch();
+        apiSearch(unit);
         return (
             <div className="text-center">
                 <Loader

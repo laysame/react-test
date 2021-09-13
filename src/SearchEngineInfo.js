@@ -4,8 +4,10 @@ import FormattedDate from "./FormattedDate";
 import WeatherIcon from "./WeatherIcon";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { clock } from '@fortawesome/free-solid-svg-icons';
+import WeatherTemperature from "./WeatherTemperature";
 
 export default function SearchEngineInfo(props) {
+    const {onUnitChange} = props;
 
     return (
         <div className="SearchEngineInfo">
@@ -16,16 +18,17 @@ export default function SearchEngineInfo(props) {
                         <h2>
                             <FormattedDate dt={props.data.date} />
                         </h2>
+                        <WeatherTemperature />
                         <span className="SearchEngine Temperature">{props.data.temperature}°</span>
                         <ButtonGroup size="mb-2">
-                            <Button className="btn">°C</Button>
-                            <Button className="btn">°F</Button>
+                            <Button className="btn" onClick={() => onUnitChange('metric')}>°C</Button>
+                            <Button className="btn" onClick={() => onUnitChange('imperial')}>°F</Button>
                         </ButtonGroup>
                     </div>
                 </Col>
                 <Col className="SearchEngine Header col-6 clearfix mt-5 p-0">
                     <div className="">
-                       <WeatherIcon code={props.data.icon} alt={props.data.description}/>
+                       <WeatherIcon iconCode={props.data.icon} alt={props.data.description}/>
                         <div className="mt-1 Description">
                             <span>{props.data.description}</span>
                         </div>
