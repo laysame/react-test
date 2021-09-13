@@ -5,8 +5,8 @@ import WeatherIcon from "./WeatherIcon";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
-import { faClock } from "@fortawesome/free-solid-svg-icons";
-library.add(fab, faClock, );
+import { faTemperatureHigh, faArrowCircleUp,faArrowCircleDown, faWater, faWind } from "@fortawesome/free-solid-svg-icons";
+library.add(fab, faTemperatureHigh,faArrowCircleUp,faArrowCircleDown, faWater, faWind );
 
 export default function SearchEngineInfo(props) {
     const {onUnitChange} = props;
@@ -41,11 +41,11 @@ export default function SearchEngineInfo(props) {
                 <Col className="SearchEngine col-12 mb-3 ps-0">
                     <nav className="SearchEngine">
                         <ul className="SearchEngine Description list-group list-group-horizontal-sm">
-                            <li className="list-group-item"><FontAwesomeIcon icon="check-square" />
-                                 Feels Like {props.data.feelsLike}°</li>
-                            <li className="list-group-item">High: {props.data.tempMax}° | Low: {props.data.tempMin}°</li>
-                            <li className="list-group-item">Humidity: {props.data.humidity}%</li>
-                            <li className="list-group-item">Wind: {props.data.wind}km/H</li>
+                            <li className="list-group-item"><FontAwesomeIcon icon="temperature-high" /> Feels Like: {props.data.feelsLike}°</li>
+                            <li className="list-group-item"><FontAwesomeIcon icon="arrow-circle-up"/> {props.data.tempMax}°
+                                <FontAwesomeIcon icon="arrow-circle-down"/> {props.data.tempMin}°</li>
+                            <li className="list-group-item"><FontAwesomeIcon icon="water"/> Humidity: {props.data.humidity}%</li>
+                            <li className="list-group-item"><FontAwesomeIcon icon="wind"/> Wind: {props.data.wind}km/H</li>
                         </ul>
                     </nav>
                 </Col>
