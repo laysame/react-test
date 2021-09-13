@@ -27,7 +27,7 @@ export default function SearchEngineInfo(props) {
                         </ButtonGroup>
                     </div>
                 </Col>
-                <Col className="SearchEngine Header col-6 clearfix mt-5 p-0">
+                <Col className="SearchEngine Header col clearfix mt-5 p-0">
                     <div className="">
                        <WeatherIcon iconCode={props.data.icon} alt={props.data.description}/>
                         <div className="mt-1 Description">
@@ -35,20 +35,20 @@ export default function SearchEngineInfo(props) {
                         </div>
                     </div>
                 </Col>
-
-            </Row>
-            <Row>
-                <Col className="SearchEngine col-12 mb-3 ps-0">
-                    <nav className="SearchEngine">
-                        <ul className="SearchEngine Description list-group list-group-horizontal-sm">
-                            <li className="list-group-item"><FontAwesomeIcon icon="temperature-high" /> Feels Like: {props.data.feelsLike}°</li>
-                            <li className="list-group-item"><FontAwesomeIcon icon="arrow-circle-up"/> {props.data.tempMax}°
+                <Col className="SearchEngine col mt-5 p-0">
+                    <nav className="SearchEngine ms-3">
+                        <ul className="SearchEngine Description">
+                            <li><FontAwesomeIcon icon="temperature-high" /> Feels Like: {props.data.feelsLike}°</li>
+                            <li><FontAwesomeIcon icon="arrow-circle-up"/> {props.data.tempMax}°
                                 <FontAwesomeIcon icon="arrow-circle-down"/> {props.data.tempMin}°</li>
-                            <li className="list-group-item"><FontAwesomeIcon icon="water"/> Humidity: {props.data.humidity}%</li>
-                            <li className="list-group-item"><FontAwesomeIcon icon="wind"/> Wind: {props.data.wind}km/H</li>
+                            <li><FontAwesomeIcon icon="water"/> Humidity: {props.data.humidity}%</li>
+                            <li><FontAwesomeIcon icon="wind"/> Wind: {props.data.wind}km/H</li>
                         </ul>
                     </nav>
                 </Col>
+            </Row>
+            <Row>
+
             </Row>
         </div>
     )
