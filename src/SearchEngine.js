@@ -30,9 +30,8 @@ export default function SearchEngine(props) {
     }
 
     function onUnitChange(unit) {
-        console.log(unit)
         setUnit(unit);
-        apiSearch(unit)
+        apiSearch(unit);
     }
 
     function apiSearch(unit){

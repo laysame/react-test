@@ -1,4 +1,8 @@
 import React from "react";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faClock } from "@fortawesome/free-solid-svg-icons";
+library.add( faClock, );
 
 export default function FormattedDate(props){
 
@@ -30,7 +34,7 @@ export default function FormattedDate(props){
     }
     return (
         <div>
-            {day} {month} {date}, {hours}:{minutes}
+            {day} {month} {date} <FontAwesomeIcon icon="clock"/> {hours}:{minutes}
         </div>
     )
 }
