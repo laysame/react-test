@@ -47,9 +47,6 @@ export default function SearchEngineInfo(props) {
                     </nav>
                 </Col>
             </Row>
-            <Row>
-
-            </Row>
         </div>
     )
 }
