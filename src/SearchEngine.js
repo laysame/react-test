@@ -46,6 +46,7 @@ export default function SearchEngine(props) {
 
     function updateSubmit(event){
         setCity(event.target.value);
+        
     }
 
     function handleCurrent(event) {
