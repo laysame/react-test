@@ -1,5 +1,6 @@
 import React from "react";
 
+
 export default function WeatherIcon(props) {
     const IconMap = {
         '01d': '/icons/clear-sky-day.png',
@@ -23,7 +24,7 @@ export default function WeatherIcon(props) {
     };
     return (
         <div className="WeatherIcon">
-            <img src={IconMap[props.iconCode]} alt={props.alt}/>
+            <img src={IconMap[props.iconCode]} alt={props.alt} size={props.size}/>
         </div>
     )
 }

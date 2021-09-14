@@ -5,6 +5,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import Loader from "react-loader-spinner";
 import SearchEngineInfo from "./SearchEngineInfo";
+import WeatherForecast from "./WeatherForecast";
+import WeatherIcon from "./WeatherIcon";
 
 export default function SearchEngine(props) {
     const apiKey = "14710927095f6c1242ef86d55fbc5c01";
@@ -46,7 +48,7 @@ export default function SearchEngine(props) {
 
     function updateSubmit(event){
         setCity(event.target.value);
-        
+
     }
 
     function handleCurrent(event) {
@@ -85,6 +87,7 @@ export default function SearchEngine(props) {
                             <SearchEngineInfo data={weather} onUnitChange={onUnitChange} />
                         </Col>
                     </Row>
+                    <WeatherForecast iconCode={weather.icon}/>
                 </Container>
             </div>
         )
