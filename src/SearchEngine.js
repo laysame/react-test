@@ -15,6 +15,7 @@ export default function SearchEngine(props) {
     const [weather, setWeather] = useState({ready:false});
 
     function handleResponse(response) {
+
         setWeather({
             ready: true,
             temperature: Math.round(response.data.main.temp),
@@ -28,6 +29,8 @@ export default function SearchEngine(props) {
             tempMax:Math.round(response.data.main.temp_max),
             tempMin:Math.round(response.data.main.temp_min),
             date: new Date(response.data.dt * 1000),
+            latitude: response.data.coord.lat,
+            longitude: response.data.coord.lon,
         });
     }
 
@@ -48,7 +51,6 @@ export default function SearchEngine(props) {
 
     function updateSubmit(event){
         setCity(event.target.value);
-
     }
 
     function handleCurrent(event) {
@@ -87,7 +89,8 @@ export default function SearchEngine(props) {
                             <SearchEngineInfo data={weather} onUnitChange={onUnitChange} />
                         </Col>
                     </Row>
-                    <WeatherForecast iconCode={weather.icon}/>
+                    <WeatherForecast iconCode={weather.icon} apiKey={apiKey} latitude={weather.latitude}
+                                     longitude={weather.longitude} unit={unit}/>
                 </Container>
             </div>
         )
@@ -100,7 +103,7 @@ export default function SearchEngine(props) {
                     color="#99621b"
                     height={50}
                     width={50}
-                    timeout={600}
+                    timeout={700}
                 />
             </div>
         )
