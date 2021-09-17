@@ -6,16 +6,14 @@ import axios from "axios";
 import Loader from "react-loader-spinner";
 import SearchEngineInfo from "./SearchEngineInfo";
 import WeatherForecast from "./WeatherForecast";
-import WeatherIcon from "./WeatherIcon";
 
 export default function SearchEngine(props) {
-    const apiKey = "14710927095f6c1242ef86d55fbc5c01";
+    const apiKey = "bbb62f4389795449a2b435ca7ac87d28";
     const [unit, setUnit] = useState("metric");
     const [city, setCity] = useState(props.defaultCity);
     const [weather, setWeather] = useState({ready:false});
 
     function handleResponse(response) {
-
         setWeather({
             ready: true,
             temperature: Math.round(response.data.main.temp),
