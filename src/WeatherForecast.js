@@ -6,21 +6,28 @@ import Loader from "react-loader-spinner";
 import Forecast from "./Forecast";
 
 export default function WeatherForecast(props) {
-    const [forecast, setForecast] = useState({ready: false});
+    const [forecast, setForecast] = useState(null);
+    const [ready, setReady] = useState(false);
 
     function handleForecastResponse(response) {
-        setForecast({
-            ready: true,
-            forecastData: response.data.daily,
-        })
+        console.log(response.data);
+        setForecast(response.data.daily);
+        setReady(true);
     }
-
-    if(forecast.ready) {
+console.log(forecast)
+    if(ready) {
         return (
             <Row className="WeatherForecast">
-                <Col className="WeatherForecast col">
-                    <Forecast forecastData={forecast.forecastData} />
-                </Col>
+
+                {forecast.map(function (dailyForecast, index){
+                    if (index < 6 && index > 0) {
+                    return (
+                        <Col className="WeatherForecast col"  key={index}>
+                            <Forecast forecastData={dailyForecast} />
+                        </Col>
+                    )}
+                })}
+
             </Row>
         )
     } else {

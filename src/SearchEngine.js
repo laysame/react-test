@@ -8,7 +8,7 @@ import SearchEngineInfo from "./SearchEngineInfo";
 import WeatherForecast from "./WeatherForecast";
 
 export default function SearchEngine(props) {
-    const apiKey = "bbb62f4389795449a2b435ca7ac87d28";
+    const apiKey = "1e7c392c03e6846776d349c369f06242";
     const [unit, setUnit] = useState("metric");
     const [city, setCity] = useState(props.defaultCity);
     const [weather, setWeather] = useState({ready:false});
