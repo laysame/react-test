@@ -51,8 +51,18 @@ export default function SearchEngine(props) {
         setCity(event.target.value);
     }
 
+    function handlePosition(position) {
+console.log(position.coords)
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${unit}`;
+        axios.get(url).then(handleResponse);
+    }
+
     function handleCurrent(event) {
         event.preventDefault();
+        navigator.geolocation.getCurrentPosition(handlePosition);
+
     }
 
     let form =
