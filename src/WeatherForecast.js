@@ -28,7 +28,9 @@ export default function WeatherForecast(props) {
                         <Col className="WeatherForecast col"  key={index}>
                             <Forecast forecastData={dailyForecast} />
                         </Col>
-                    )}
+                    )} else {
+                        return null;
+                    }
                 })}
 
             </Row>
