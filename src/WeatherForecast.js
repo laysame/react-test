@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {Col, Row} from "react-bootstrap";
 import "./WeatherForecast.css";
@@ -9,12 +9,15 @@ export default function WeatherForecast(props) {
     const [forecast, setForecast] = useState(null);
     const [ready, setReady] = useState(false);
 
+    useEffect(() => {
+        setReady(false);
+    },[props.latitude]);
+
     function handleForecastResponse(response) {
-        console.log(response.data);
         setForecast(response.data.daily);
         setReady(true);
     }
-console.log(forecast)
+
     if(ready) {
         return (
             <Row className="WeatherForecast">
@@ -38,10 +41,10 @@ console.log(forecast)
             <div className="text-center">
                 <Loader
                     type="ThreeDots"
-                    color="#99621b"
-                    height={50}
-                    width={50}
-                    timeout={700}
+                    color="#34094d"
+                    height={60}
+                    width={60}
+                    timeout={900}
                 />
             </div>
         )

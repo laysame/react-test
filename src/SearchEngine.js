@@ -98,10 +98,10 @@ export default function SearchEngine(props) {
             <div className="text-center">
                 <Loader
                     type="ThreeDots"
-                    color="#99621b"
-                    height={50}
-                    width={50}
-                    timeout={700}
+                    color="#34094d"
+                    height={60}
+                    width={60}
+                    timeout={900}
                 />
             </div>
         )

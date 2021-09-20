@@ -7,11 +7,9 @@ export default function Forecast(props) {
     const temperatureMax = props.forecastData.temp.max;
     const temperatureMin = props.forecastData.temp.min;
     const date = new Date(props.forecastData.dt * 1000 );
-    const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ];
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ];
     let day = days[date.getDay()];
     const icon = props.forecastData.weather[0].icon;
-
-    console.log(date)
 
     return (
         <div className="Forecast">
