@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
 
 .wrapper {
   background: linear-gradient(to top, #dfe9f3 0%, white 100%);
@@ -11,7 +11,7 @@
 }
 
 .App {
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: "Nanum Gothic", sans-serif;
   text-align: left;
   color: #34094d;
 }

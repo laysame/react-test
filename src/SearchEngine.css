@@ -1,47 +1,45 @@
-
 .SearchEngine h1 {
-    font-size: 3em;
+  font-size: 3em;
 }
 
 .SearchEngine h2 {
-    font-size: 1.3em;
+  font-size: 1.3em;
 }
 
 .SearchEngine .Header img {
-    width: 8em;
+  width: 8em;
 }
 
 .SearchEngine .Temperature {
-    font-size: 6em;
+  font-size: 6em;
 }
 
-.SearchEngine .SearchEngine-Input{
-    border: 1px solid #bbbec4;
+.SearchEngine .SearchEngine-Input {
+  border: 1px solid #bbbec4;
 }
-.SearchEngine .SearchEngine-Submit, .SearchEngine .btn {
-    color: #fff;
-    background: #352f3a;
-    border: 1px solid #352f3a;;
-    font-weight: bold;
+.SearchEngine .SearchEngine-Submit,
+.SearchEngine .btn {
+  color: #fff;
+  background: #352f3a;
+  border: 1px solid #352f3a;
+  font-weight: bold;
 }
 
-.SearchEngine .SearchEngine-Submit:hover, .SearchEngine .btn:hover{
-    background: #fff;
-    color: #352f3a;
-    border: 1px solid #bbbec4;
-    transition: 100ms ease-in-out;
-    cursor: pointer;
+.SearchEngine .SearchEngine-Submit:hover,
+.SearchEngine .btn:hover {
+  background: #fff;
+  color: #352f3a;
+  border: 1px solid #bbbec4;
+  transition: 100ms ease-in-out;
+  cursor: pointer;
 }
 
 .SearchEngine .Description {
-    list-style: none;
-    padding: 0;
-    font-size: 1.3em;
+  list-style: none;
+  padding: 0;
+  font-size: 1.3em;
 }
 
 .SearchEngine .list-group {
-    background: none;
+  background: none;
 }
-
-
-
